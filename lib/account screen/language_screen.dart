@@ -9,6 +9,24 @@ class Language_Screen extends StatefulWidget {
 }
 
 class _Language_ScreenState extends State<Language_Screen> {
+  String selectedLanguage = 'English';
+  final List<String> languages = [
+    'English',
+    'தமிழ்',
+    'हिन्दी',
+
+  ];
+  List subtitle =[
+    'English',
+    'Tamil',
+    'Hindi'
+  ];
+
+  List text=[
+    'A',
+    'த',
+    'िन'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,17 +60,42 @@ class _Language_ScreenState extends State<Language_Screen> {
             SizedBox(height: 10),
             Text("True Guide supports multiple languages to enhance your experience. Please select your preferred language to continue.",style: GoogleFonts.lato(fontSize: 12,fontWeight: FontWeight.bold),),
             SizedBox(height: 10),
-            Container(
-              child: ListTile(
-                leading: CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Color(0xffEAECF9),
-                  child: Text("A",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 32)),),
-                ),
-                title: Text("English",style:GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,color: Colors.black)),),
-                subtitle: Text("English",style:GoogleFonts.lato(textStyle: TextStyle(fontSize: 15,color: Color(0xff6F6666))),),
+            Expanded(
+              child: ListView.builder(
+                itemCount: languages.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+
+                        bottom: BorderSide(color: Colors.black, width: 0.50),
+                      ),
+                    ),
+                    child: ListTile(
+                      leading: Container(height: 80,width: 80,
+                      child: CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Color(0xffEAECF9),
+                        child: Text(text[index],style: GoogleFonts.lato(fontSize: 30),),
+                      ),),
+                      title: Text(
+                        languages[index],
+                        style: GoogleFonts.lato(fontSize: 20),
+                      ),
+                      subtitle: Text(subtitle[index],style: GoogleFonts.lato(fontSize: 15,color: Color(0xff6F6666)),),
+                      trailing: selectedLanguage == languages[index]
+                          ? Icon(Icons.check_circle, color: Colors.purple)
+                          : Icon(Icons.circle_outlined, color: Colors.grey),
+                      onTap: () {
+                        setState(() {
+                          selectedLanguage = languages[index];
+                        });
+                      },
+                    ),
+                  );
+                },
               ),
-            )
+            ),
           ],
           ),
         ),

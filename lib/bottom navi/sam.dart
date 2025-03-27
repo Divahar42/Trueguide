@@ -1,102 +1,153 @@
 import 'package:flutter/material.dart';
 
 
-
-class LanguageSelectionScreen extends StatefulWidget {
+class SpecialDayPosterScreen extends StatefulWidget {
   @override
-  _LanguageSelectionScreenState createState() =>
-      _LanguageSelectionScreenState();
+  _SpecialDayPosterScreenState createState() => _SpecialDayPosterScreenState();
 }
 
-class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
-  String _selectedLanguage = 'English';
-
+class _SpecialDayPosterScreenState extends State<SpecialDayPosterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Select Language"),
-        backgroundColor: Colors.purple.shade100,
-        elevation: 0,
+        title: Text("Special Day Poster"),
+        backgroundColor: Colors.purple[100],
+        actions: [
+          IconButton(icon: Icon(Icons.favorite), onPressed: () {}),
+          IconButton(icon: Icon(Icons.archive), onPressed: () {}),
+        ],
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.white, Colors.pink.shade100],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top Icon
-              Image.asset(
-                'assets/language.png', // Replace with your asset image
-                height: 80,
+              _buildSearchBar(),
+              SizedBox(height: 20),
+              _buildSectionTitle("Today Poster"),
+              _buildPosterCard(context, "Human Rights Day", "10-12-2024", "assets/img.png"),
+              _buildSectionTitle("Yesterday Poster"),
+              _buildPosterCard(context, "International Corruption Day", "09-12-2024", "assets/img.png"),
+              _buildSectionTitle("Older Poster"),
+              Row(
+                children: [
+                  Expanded(child: _buildSmallPoster(context, "assets/img.png")),
+                  SizedBox(width: 10),
+                  Expanded(child: _buildSmallPoster(context, "assets/img.png")),
+                ],
               ),
-
-              SizedBox(height: 16),
-
-              // Title
-              Text(
-                "Select Language",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-
-              SizedBox(height: 8),
-
-              // Subtitle
-              Text(
-                "True Guide supports multiple languages to enhance your experience. Please select your preferred language to continue.",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14, color: Colors.black54),
-              ),
-
-              SizedBox(height: 24),
-
-              // Language Selection
-              _buildLanguageTile('English', 'A', 'English'),
-              _buildLanguageTile('தமிழ்', 'த', 'Tamil'),
-              _buildLanguageTile('हिंदी', 'आ', 'Hindi'),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
-  Widget _buildLanguageTile(String language, String iconText, String value) {
-    return Card(
-      elevation: 2,
-      child: RadioListTile(
-        title: Row(
-          children: [
-            CircleAvatar(
-              backgroundColor: Colors.black,
-              child: Text(iconText, style: TextStyle(color: Colors.white)),
+  Widget _buildSearchBar() {
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: "Enter Date",
+              border: OutlineInputBorder(),
             ),
-            SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(language, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                Text(value, style: TextStyle(fontSize: 14, color: Colors.black54)),
-              ],
+          ),
+        ),
+        SizedBox(width: 10),
+        ElevatedButton(
+          onPressed: () {},
+          child: Text("Search"),
+        )
+      ],
+    );
+  }
+
+  Widget _buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+    );
+  }
+
+  Widget _buildPosterCard(BuildContext context, String title, String date, String imagePath) {
+    return Card(
+      elevation: 4,
+      child: ListTile(
+        leading: Image.asset(imagePath, width: 50, height: 50, fit: BoxFit.cover),
+        title: Text(title),
+        subtitle: Text(date),
+        trailing: IconButton(
+          icon: Icon(Icons.download),
+          onPressed: () => _showPosterDialog(context, title, imagePath),
+        ),
+        onTap: () => _showPosterDialog(context, title, imagePath),
+      ),
+    );
+  }
+
+  Widget _buildSmallPoster(BuildContext context, String imagePath) {
+    return GestureDetector(
+      onTap: () => _showPosterDialog(context, "Older Poster", imagePath),
+      child: Image.asset(imagePath, width: 100, height: 100),
+    );
+  }
+
+  void _showPosterDialog(BuildContext context, String title, String imagePath) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Column(
+            children: [
+              Image.asset(imagePath, width: 100, height: 150),
+              Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("With Logo"),
+                  Radio(value: true, groupValue: true, onChanged: (value) {}),
+                  Text("Without Logo"),
+                  Radio(value: false, groupValue: true, onChanged: (value) {}),
+                ],
+              ),
+              TextField(
+                decoration: InputDecoration(labelText: "Enter Your Name"),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text("Cancel"),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text("Download Image"),
             ),
           ],
-        ),
-        value: value,
-        groupValue: _selectedLanguage,
-        onChanged: (String? newValue) {
-          setState(() {
-            _selectedLanguage = newValue!;
-          });
-        },
-        activeColor: Colors.purple,
-      ),
+        );
+      },
+    );
+  }
+
+  Widget _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.category), label: "Category"),
+        BottomNavigationBarItem(icon: Icon(Icons.featured_play_list), label: "Features"),
+        BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "Account"),
+      ],
+      selectedItemColor: Colors.purple,
     );
   }
 }

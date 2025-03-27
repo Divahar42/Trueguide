@@ -15,10 +15,10 @@ class _Bottom_NavigationState extends State<Bottom_Navigation> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    const Home_screen(),
-    const Category_Screen(),
-    Features_Screen(),
-    const Account_Screen(),
+     Home_screen(),
+     Category_Screen(),
+     Features_Screen(),
+     Account_Screen(),
   ];
 
   void _onItemTapped(int index) {
