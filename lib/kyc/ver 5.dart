@@ -4,13 +4,6 @@ import 'package:true_guide/kyc/ver%204.dart';
 
 
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: kyc5(),
-  ));
-}
-
 class kyc5 extends StatefulWidget {
   @override
   _KYCVerificationScreenState createState() => _KYCVerificationScreenState();

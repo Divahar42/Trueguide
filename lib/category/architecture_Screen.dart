@@ -26,7 +26,7 @@ class _architectureState extends State<architecture> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>Bottom_Navigation()));
+          Navigator.pop(context);
         }, icon: Icon(Icons.arrow_back)),
         title: Text("Architecture",style: GoogleFonts.lato(fontSize: 22,fontWeight: FontWeight.w400,color: Colors.purple),),
         actions: [
@@ -190,7 +190,6 @@ class _itemsState extends State<items> {
         body: ListView.builder(
             itemCount: 6,
             itemBuilder: (context,index){
-
               return
                 GestureDetector(
                   onTap: (){

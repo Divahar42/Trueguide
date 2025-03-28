@@ -17,7 +17,9 @@ class _Special_dayState extends State<Special_day> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back,color: Color(0xff742B88),)),
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back,color: Color(0xff742B88),)),
         title: Text("Special Day Poster",style: GoogleFonts.lato(fontSize: 20,color: Color(0xff742B88)),),
         backgroundColor: Color(0xffFBF8F8),
       ),
@@ -129,15 +131,18 @@ class _Special_dayState extends State<Special_day> {
                         child: Row(children: [
                           GestureDetector(
                             onTap:(){
-                              Container();
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                     backgroundColor: Colors.white,
                                     title: Column(
                                       children: [
-                                        Image.asset("assets/img.png",width:100,height: 100,)
+                                        Image.asset("assets/img.png",width:400,height: 380,),
+                                        Text("Human Rights Day",style: TextStyle(fontSize: 30),)
                                       ],
                                     ),
                                     content: Column(
@@ -152,20 +157,64 @@ class _Special_dayState extends State<Special_day> {
                                             Radio(value: false, groupValue: true, onChanged: (value) {}),
                                           ],
                                         ),
-                                        TextField(
-                                          decoration: InputDecoration(labelText: "Enter Your Name"),
+                                        Row(
+                                          children: [
+                                            SizedBox(height:40,width: 80,
+                                              child: TextFormField(
+                                                decoration: InputDecoration(labelText: "Enter Your Name",
+                                                    border: OutlineInputBorder()
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(width: 10),
+                                            SizedBox(height: 40,width: 180,
+                                              child: TextFormField(
+                                                decoration: InputDecoration(labelText: "Enter Your Name",
+                                                border: OutlineInputBorder()
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.of(context).pop(),
-                                        child: Text("Cancel"),
+                                    actions: [Column(children: [
+                                      SizedBox(height:40,width: 160,
+                                        child: ElevatedButton(
+                                            style:ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(4)
+                                              ),
+                                              backgroundColor: Color(0xff0073F7)
+                                            ),
+                                            onPressed: (){}, child: Text("Save Detail",style: GoogleFonts.poppins(fontSize: 12,color: Colors.white),)),
                                       ),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text("Download Image"),
-                                      ),
+                                      SizedBox(height: 10),
+                                      Row(children: [
+                                        SizedBox(height:40,width: 130,
+                                          child: ElevatedButton(
+                                              style:ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(4)
+                                                  ),
+                                                  backgroundColor: Color(0xff0073F7)
+                                              ),
+                                              onPressed: (){}, child: Text("Download Your Image",style: GoogleFonts.poppins(fontSize: 12,color: Colors.white),)),
+                                        ),
+                                        SizedBox(width: 20),
+                                        SizedBox(height:40,width: 130,
+                                          child: ElevatedButton(
+                                              style:ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(4)
+                                                  ),
+                                                  backgroundColor: Color(0xff0073F7)
+                                              ),
+                                              onPressed: (){}, child: Text("Share Your Image",style: GoogleFonts.poppins(fontSize: 12,color: Colors.white),)),
+                                        ),
+                                      ],)
+                                    ],)
+                                      
                                     ],
                                   );
                                 },
@@ -242,18 +291,110 @@ class _Special_dayState extends State<Special_day> {
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: Row(children: [
-                          Container(height: 40,width: 100,
-                            decoration: BoxDecoration(
-                                color: Color(0xff742B88),
-                                border: Border.all(color: Color(0xffBEBCBC)),
-                                borderRadius: BorderRadius.circular(4)
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(children: [
-                                Icon(Icons.file_download_outlined,color: Color(0xffE8EAED),),
-                                Text("Download",style: GoogleFonts.poppins(fontSize: 10,color: Colors.white),)
-                              ],),
+                          GestureDetector(
+                            onTap:(){
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    backgroundColor: Colors.white,
+                                    title: Column(
+                                      children: [
+                                        Image.asset("assets/img_1.png",width:400,height: 380,),
+                                        Text("International Corruption Day",style: TextStyle(fontSize: 30),)
+                                      ],
+                                    ),
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text("With Logo"),
+                                            Radio(value: true, groupValue: true, onChanged: (value) {}),
+                                            Text("Without Logo"),
+                                            Radio(value: false, groupValue: true, onChanged: (value) {}),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            SizedBox(height:40,width: 80,
+                                              child: TextFormField(
+                                                decoration: InputDecoration(labelText: "Enter Your Name",
+                                                    border: OutlineInputBorder()
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(width: 10),
+                                            SizedBox(height: 40,width: 180,
+                                              child: TextFormField(
+                                                decoration: InputDecoration(labelText: "Enter Your Name",
+                                                    border: OutlineInputBorder()
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    actions: [Column(children: [
+                                      SizedBox(height:40,width: 160,
+                                        child: ElevatedButton(
+                                            style:ElevatedButton.styleFrom(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(4)
+                                                ),
+                                                backgroundColor: Color(0xff0073F7)
+                                            ),
+                                            onPressed: (){}, child: Text("Save Detail",style: GoogleFonts.poppins(fontSize: 12,color: Colors.white),)),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Row(children: [
+                                        SizedBox(height:40,width: 130,
+                                          child: ElevatedButton(
+                                              style:ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(4)
+                                                  ),
+                                                  backgroundColor: Color(0xff0073F7)
+                                              ),
+                                              onPressed: (){}, child: Text("Download Your Image",style: GoogleFonts.poppins(fontSize: 12,color: Colors.white),)),
+                                        ),
+                                        SizedBox(width: 20),
+                                        SizedBox(height:40,width: 130,
+                                          child: ElevatedButton(
+                                              style:ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(4)
+                                                  ),
+                                                  backgroundColor: Color(0xff0073F7)
+                                              ),
+                                              onPressed: (){}, child: Text("Share Your Image",style: GoogleFonts.poppins(fontSize: 12,color: Colors.white),)),
+                                        ),
+                                      ],)
+                                    ],)
+
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: Container(height: 40,width: 100,
+                              decoration: BoxDecoration(
+                                  color: Color(0xff742B88),
+                                  border: Border.all(color: Color(0xffBEBCBC)),
+                                  borderRadius: BorderRadius.circular(4)
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(children: [
+                                  Icon(Icons.file_download_outlined,color: Color(0xffE8EAED),),
+                                  Text("Download",style: GoogleFonts.poppins(fontSize: 10,color: Colors.white),)
+                                ],),
+                              ),
                             ),
                           ),
                           SizedBox(width: 20),
@@ -266,8 +407,7 @@ class _Special_dayState extends State<Special_day> {
                               padding: const EdgeInsets.all(8.0),
                               child: Row(children: [
                                 Icon(Icons.arrow_outward,color: Color(0xffE8EAED),),
-                                Text("Share post",style: GoogleFonts.poppins(fontSize: 10,color: Colors.white),),
-
+                                Text("Share post",style: GoogleFonts.poppins(fontSize: 10,color: Colors.white),)
                               ],),
                             ),
                           ),

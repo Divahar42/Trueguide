@@ -19,7 +19,9 @@ class _Help_screenState extends State<Help_screen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xffFBF8F8),
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back,color: Color(0xff742B88),)),
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back,color: Color(0xff742B88),)),
         title: Text("Help",style: GoogleFonts.lato(fontSize: 16,color: Color(0xff742B88)),),
         actions: [
           TextButton(onPressed: (){}, child: Text("Back to Home",style: GoogleFonts.lato(fontSize: 15,decoration: TextDecoration.underline,decorationColor:Color(0xff742B88) ,color:Color(0xff742B88) ),))

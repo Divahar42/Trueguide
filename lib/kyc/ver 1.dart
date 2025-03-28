@@ -3,19 +3,6 @@ import 'package:true_guide/category/new3.dart';
 import 'package:true_guide/kyc/ver%202.dart';
 
 
-void main() {
-  runApp(kyc());
-}
-
-class kyc extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: KYCVerificationScreen(),
-    );
-  }
-}
 
 class KYCVerificationScreen extends StatefulWidget {
   @override
@@ -45,9 +32,10 @@ class _KYCVerificationScreenState extends State<KYCVerificationScreen> {
             // Image or illustration
             Center(
               child: Container(
+                height: 200,width: 200,
                 child: Image.asset(
-                  "assets/kyc.jpeg", // Add your image in assets folder
-                ),
+                  "assets/kyc.png", // Add your image in assets folder
+                fit: BoxFit.fill,),
               ),
             ),
             SizedBox(height: 16),

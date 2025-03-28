@@ -3,13 +3,6 @@ import 'package:true_guide/kyc/ver%201.dart';
 import 'package:true_guide/kyc/ver%203.dart';
 
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: kyc2(),
-  ));
-}
-
 class kyc2 extends StatefulWidget {
   @override
   _KYCVerificationScreenState createState() => _KYCVerificationScreenState();
@@ -33,7 +26,7 @@ class _KYCVerificationScreenState extends State<kyc2> {
       appBar: AppBar(
         title: Text("KYC Verification",style: TextStyle(color: Colors.purple),),
         leading:IconButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>kyc()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>KYCVerificationScreen()));
         }, icon: Icon(Icons.arrow_back_ios,color: Colors.purple,),),),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

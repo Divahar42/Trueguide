@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:true_guide/kyc/ver%203.dart';
 import 'package:true_guide/kyc/ver%205.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: kyc4(),
-  ));
-}
 
 class kyc4 extends StatefulWidget {
   @override

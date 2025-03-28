@@ -31,7 +31,9 @@ class _Language_ScreenState extends State<Language_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back,color: Colors.purple,)),
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back,color: Colors.purple,)),
         title: Text("Select Language",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,color: Colors.purple)),),
       ),
       body: Container(

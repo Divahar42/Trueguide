@@ -106,19 +106,10 @@ class _Features_ScreenState extends State<Features_Screen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.blue,
-                        child: Text("H", style: TextStyle(color: Colors.white)),
-                      ),
-                      SizedBox(width: 10),
-                      Text(
-                        "Hari",
-                        style: GoogleFonts.lato(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                      ),
-                    ],
-                  ),
+                  Container(height: 80,width: 250,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(image: AssetImage("assets/review.png"),fit: BoxFit.fill)
+                  ),),
                   SizedBox(height: 10),
                   Text("02 Review",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 15,color: Colors.black)),),
                   Text(

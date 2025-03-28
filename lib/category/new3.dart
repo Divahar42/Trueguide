@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../kyc/ver 1.dart';
 import 'architecture_Screen.dart';
 import 'new2.dart';
 
@@ -25,6 +26,17 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
 
   String? selectedMonth;
   String? selectedYear;
+  String? selectedcategories;
+  List<String> categories = [
+    "Architecture",
+    "Land Promotors",
+    "Engineers",
+    "Real Estate Consultant",
+    "Builders",
+    "Contractors",
+    "Registration Services",
+    "Bank Loans",
+  ];
   List<String> months = [
     'January',
     'February',
@@ -161,25 +173,36 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                   child: Text("+ Add Another Social Media Link"),
                 ),
                 SizedBox(height: 10),
-                ExpansionTile(
-                  title: Text("Add Categories"),
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("Category selection here..."),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: SizedBox(height: 50,width: 330,
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(labelText: "Categories"),
+                      value: selectedcategories,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedcategories = newValue;
+                        });
+                      },
+                      items: categories.map((String categories) {
+                        return DropdownMenuItem<String>(
+                          value: categories,
+                          child: Text(categories),
+                        );
+                      }).toList(),
                     ),
-                  ],
+                  ),
                 ),
-                ExpansionTile(
-                  title: Text("KYC Verification"),
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("Upload KYC documents here..."),
-                    ),
-                  ],
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.only(left:25),
+                  child: SizedBox(height: 40,width: 330,
+                    child: ElevatedButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => KYCVerificationScreen()));
+                    }, child: Text("KYC Verification")),
+                  ),
                 ),
-                SizedBox(height: 230),
+                SizedBox(height: 190),
                 SizedBox(
                   width: double.infinity,
                   height: 50,

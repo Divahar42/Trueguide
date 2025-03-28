@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:true_guide/account%20screen/dashbord_screen.dart';
+import 'package:true_guide/account%20screen/help%20and%20support.dart';
+import 'package:true_guide/account%20screen/language_screen.dart';
+import 'package:true_guide/account%20screen/message_screen.dart';
+import 'package:true_guide/bottom%20navi/bottom_navigation.dart';
+import 'package:true_guide/bottom%20navi/home_screen.dart';
+import 'package:true_guide/login.dart';
+import 'package:true_guide/special%20day%20poster/special%20day.dart';
 
 class Account_Screen extends StatefulWidget {
   const Account_Screen({super.key});
@@ -31,8 +39,53 @@ class _Account_ScreenState extends State<Account_Screen> {
     "assets/icon add.png",
     "assets/icon add pro.png"
   ];
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            title: Text(
+              "Logout",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            content: Text(
+              "Are you sure you want to log out?",
+              style: TextStyle(fontSize: 16),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.grey, fontSize: 16),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.purple,
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Login_Screen()))
+                  ;
 
-
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Logged out successfully")),
+                  );
+                },
+                child: Text(
+                  "Logout",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+            ],
+          );
+          },
+        );
+   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +133,7 @@ class _Account_ScreenState extends State<Account_Screen> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 150),
                         child: IconButton(onPressed: (){
-                          Navigator.pop(context);
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Bottom_Navigation()));
                         }, icon:Icon(Icons.arrow_back,color: Color(0xff742B88),))
                       ),
                       Padding(
@@ -186,6 +239,47 @@ class _Account_ScreenState extends State<Account_Screen> {
                       leading: Icon(menu[index]["icon"], color: Colors.black, size: 20),
                       title: Text(menu[index]["title"]),
                       trailing: Icon(Icons.arrow_forward_ios),
+                      onTap: (){
+                        switch (menu[index]["title"]) {
+                          case 'Languages':
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Language_Screen()));
+                            break;
+                          case 'Feedback & Support':
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Help_screen()));
+                            break;
+                          case 'Special Day Poster':
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Special_day()));
+                            break;
+                          case 'Logout':
+                            _showLogoutDialog(context);
+                            break;
+                          case 'Dashboard':
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Dashboard_Screen()));
+                            break;
+                          case 'My Message':
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Message_Screen()));
+                            break;
+                          default:
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Coming Soon...')));
+                        }
+
+                      },
                     ),
                   ),
                 );

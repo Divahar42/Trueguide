@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:true_guide/kyc/ver%201.dart';
 import 'package:true_guide/kyc/ver%204.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: kyc3(),
-  ));
-}
 
 class kyc3 extends StatefulWidget {
   @override
@@ -32,7 +26,7 @@ class _KYCVerificationScreenState extends State<kyc3> {
       appBar: AppBar(
         title: Text("KYC Verification",style: TextStyle(color: Colors.purple),),
         leading:IconButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>kyc()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>KYCVerificationScreen()));
         }, icon: Icon(Icons.arrow_back_ios,color: Colors.purple,),),),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

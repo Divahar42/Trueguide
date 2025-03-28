@@ -82,7 +82,7 @@ class _Home_screenState extends State<Home_screen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> Account_Screen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Account_Screen()));
         }, icon: Icon(Icons.menu,color: Color(0xff742B88),)),
         title: Text("Hello... Smart Global",style: GoogleFonts.lato(fontSize: 16,color: Color(0xff742B88)),),
         actions: [
@@ -106,18 +106,43 @@ class _Home_screenState extends State<Home_screen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 40,width: 350,
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search,color:Color(0xff742B88) ,),
-                    hintText: "Search",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(color: Color(0xff742B88)
-                    )
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  Container(
+                    height: 50,
+                    width: 240,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.purple
+                      ),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomLeft: Radius.circular(20)),
+
+                    ),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Search here',
+                          prefixIcon: Icon(Icons.search)
+                      ),
+                    ),
                   ),
-                ),
-              )
+                  Container(
+                    height: 50,
+                    width: 100,
+                    child: Center(child: Text('Search',style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold),)),
+                    decoration: BoxDecoration(
+                        color: Colors.purple,
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            bottomRight: Radius.circular(20)
+                        )
+                    ),
+
+                  )
+                ],
               ),
             SizedBox(height: 10),
             Padding(
