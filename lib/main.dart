@@ -13,7 +13,6 @@ import 'package:true_guide/login.dart';
 import 'package:true_guide/special%20day%20poster/special%20day.dart';
 import 'account screen/dashbord_screen.dart';
 import 'account screen/wishlist_screen.dart';
-import 'bottom navi/sam.dart';
 import 'category/new3.dart';
 import 'category/profile_page.dart';
 import 'kyc/ver 1.dart';

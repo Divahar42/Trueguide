@@ -82,7 +82,7 @@ class _Home_screenState extends State<Home_screen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: (){
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Account_Screen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> Account_Screen()));
         }, icon: Icon(Icons.menu,color: Color(0xff742B88),)),
         title: Text("Hello... Smart Global",style: GoogleFonts.lato(fontSize: 16,color: Color(0xff742B88)),),
         actions: [
