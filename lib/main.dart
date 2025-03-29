@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'Lato',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Login_Screen(),
+      home: wishlist(),
     );
   }
 }

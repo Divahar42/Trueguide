@@ -16,21 +16,21 @@ class _wishlistState extends State<wishlist> {
 
   List architectureprofile = [
 
-    'assets/category7.png',
-    'assets/category8.png',
-    'assets/category5.png',
-    'assets/category6.png',
-    'assets/architecture1.png',
-    'asstes/architecture2.png',
+    'assets/svf.png',
+    'assets/svf.png',
+    'assets/svf.png',
+    'assets/svf.png',
+    'assets/svf.png',
+    'assets/svf.png',
   ];
 
   List names =[
-    'Ashok',
-    'Ramesh',
-    'Divahar',
-    'Sakthivel',
-    'Anbarasu',
-    'Sathish'
+    'Ashok.k.s',
+    'Ashok.k.s',
+    'Ashok.k.s',
+    'Ashok.k.s',
+    'Ashok.k.s',
+    'Ashok.k.s',
   ];
 
 
@@ -56,13 +56,13 @@ class _wishlistState extends State<wishlist> {
               GestureDetector(
                 onTap: (){
                   switch (architectureprofile[index]) {
-                    case 'assets/category7.png':
+                    case 'assets/svf.png':
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => architecture()));
                       break;
-                    case 'assets/category8.png':
+                    case 'assets/svf.png':
                       Navigator.push(
                           context,
                           MaterialPageRoute(
