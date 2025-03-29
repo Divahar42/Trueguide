@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:true_guide/category/new3.dart';
+import 'package:true_guide/kyc/kyc_terms.dart';
 import 'package:true_guide/kyc/ver%202.dart';
 
 
@@ -136,10 +137,9 @@ class _KYCVerificationScreenState extends State<KYCVerificationScreen> {
 
             // Terms & Conditions
             Center(
-              child: Text(
-                "Read KYC Terms & Conditions",
-                style: TextStyle(fontSize:20,color: Colors.black,),
-              ),
+              child: TextButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Kyc_Terms()));
+              }, child: Text("Read KYC Terms & Conditions"))
             ),
             SizedBox(height: 130),
 

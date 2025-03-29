@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:true_guide/account%20screen/dashbord_screen.dart';
+import 'package:true_guide/account%20screen/digital_card.dart';
 import 'package:true_guide/account%20screen/help%20and%20support.dart';
 import 'package:true_guide/account%20screen/language_screen.dart';
 import 'package:true_guide/account%20screen/message_screen.dart';
+import 'package:true_guide/account%20screen/product_add.dart';
+import 'package:true_guide/account%20screen/wishlist_screen.dart';
 import 'package:true_guide/bottom%20navi/bottom_navigation.dart';
 import 'package:true_guide/bottom%20navi/home_screen.dart';
-import 'package:true_guide/login.dart';
+import 'package:true_guide/login/login.dart';
 import 'package:true_guide/special%20day%20poster/special%20day.dart';
+
+import 'business_profile.dart';
 
 class Account_Screen extends StatefulWidget {
   const Account_Screen({super.key});
@@ -69,13 +74,10 @@ class _Account_ScreenState extends State<Account_Screen> {
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Login_Screen()))
-                  ;
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Login_Screen()));
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Logged out successfully")),
-                  );
-                },
+                      SnackBar(content: Text("successfully Logged out")));
+                  },
                 child: Text(
                   "Logout",
                   style: TextStyle(color: Colors.white, fontSize: 16),
@@ -201,19 +203,40 @@ class _Account_ScreenState extends State<Account_Screen> {
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Card(
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 80,
-                                    width: 82,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color:Color(0xffFFB790)
-                                    ),
-                                    child:  Image.asset(icon[index]),),
-                                  Text(add[index]["title"],style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 12)),)
-                                ],
+                            child: GestureDetector(
+                              onTap: (){
+                                switch(add[index]["title"]){
+                                  case 'My Business':
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => BusinessProfileScreen ()));
+                                    break;
+                                  case 'Add Product':
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => AddProductScreen ()));
+                                    break;
+                                  default:
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(content: Text('Coming Soon...')));
+                                }
+                              },
+                              child: Card(
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 80,
+                                      width: 82,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(8),
+                                          color:Color(0xffFFB790)
+                                      ),
+                                      child:  Image.asset(icon[index]),),
+                                    Text(add[index]["title"],style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 12)),),
+                                  ],
+                                ),
                               ),
                             )
                           );
@@ -253,6 +276,12 @@ class _Account_ScreenState extends State<Account_Screen> {
                                 MaterialPageRoute(
                                     builder: (context) => Help_screen()));
                             break;
+                          case 'My Digital Card':
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Digitalcard_Screen()));
+                            break;
                           case 'Special Day Poster':
                             Navigator.push(
                                 context,
@@ -273,6 +302,12 @@ class _Account_ScreenState extends State<Account_Screen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Message_Screen()));
+                            break;
+                          case 'Wishlist':
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Wishlist_Screen()));
                             break;
                           default:
                             ScaffoldMessenger.of(context).showSnackBar(

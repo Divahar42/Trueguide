@@ -5,14 +5,14 @@ import 'package:true_guide/category/architecture_Screen.dart';
 
 
 
-class wishlist extends StatefulWidget {
-  const wishlist({super.key});
+class Wishlist_Screen extends StatefulWidget {
+  const Wishlist_Screen({super.key});
 
   @override
-  State<wishlist> createState() => _wishlistState();
+  State<Wishlist_Screen> createState() => _Wishlist_ScreenState();
 }
 
-class _wishlistState extends State<wishlist> {
+class _Wishlist_ScreenState extends State<Wishlist_Screen> {
 
   List architectureprofile = [
 

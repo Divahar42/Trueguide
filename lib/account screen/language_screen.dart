@@ -69,7 +69,6 @@ class _Language_ScreenState extends State<Language_Screen> {
                   return Container(
                     decoration: BoxDecoration(
                       border: Border(
-
                         bottom: BorderSide(color: Colors.black, width: 0.50),
                       ),
                     ),

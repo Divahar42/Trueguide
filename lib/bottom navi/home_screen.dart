@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:true_guide/account%20screen/account_screen.dart';
+import 'package:true_guide/bottom%20navi/search_home.dart';
 
 class Home_screen extends StatefulWidget {
   const Home_screen({super.key});
@@ -122,6 +123,9 @@ class _Home_screenState extends State<Home_screen> {
 
                     ),
                     child: TextFormField(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchPage()));
+                      },
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Search here',

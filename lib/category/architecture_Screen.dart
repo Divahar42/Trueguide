@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:true_guide/bottom%20navi/bottom_navigation.dart';
 import 'package:true_guide/category/call%20now.dart';
 import 'package:true_guide/category/category_screen.dart';
+import 'package:true_guide/category/profile_1.dart';
+
 
 
 
@@ -86,17 +88,12 @@ class filter extends StatelessWidget {
                 TextButton(onPressed: (){}, child: Text('Location')),
                 TextButton(onPressed: (){}, child: Text("Rating")),
                 TextButton(onPressed: (){}, child: Text("Business type"))
-
               ],
             ) ,
-
-
           );
         },
       );
     }
-
-
     final List<String> filter = [
       'Sort by',
       'Location',
@@ -106,7 +103,6 @@ class filter extends StatelessWidget {
 
 
     return Scaffold(
-
       body: Container(
         height: 60,
         color: Colors.black12,
@@ -175,12 +171,12 @@ class _itemsState extends State<items> {
     "SRI VISHAKHA FIELDS",
   ];
   List imagess=[
-    'assets/archi.png',
-    'assets/archi.png',
-    'assets/archi.png',
-    'assets/archi.png',
-    'assets/archi.png',
-    'assets/archi.png',
+    'assets/svf.png',
+    'assets/svf.png',
+    'assets/svf.png',
+    'assets/svf.png',
+    'assets/svf.png',
+    'assets/svf.png',
   ];
 
 
@@ -194,26 +190,17 @@ class _itemsState extends State<items> {
                 GestureDetector(
                   onTap: (){
                     switch (imagess[index]) {
-                      case 'assets/archi.png':
+                      case 'assets/svf.png':
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Category_Screen()));
+                                builder: (context) => profile_1()));
                         break;
-                      case 'assets/archi.png':
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Category_Screen()));
-                        break;
-
-                      default:
+                        default:
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Coming Soon...')));
                     }
-
                   },
-
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
@@ -319,7 +306,6 @@ class _itemsState extends State<items> {
                         ],),
                       decoration: BoxDecoration(
                           color: Colors.white,
-
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5), // Shadow color
@@ -328,7 +314,6 @@ class _itemsState extends State<items> {
                               offset: Offset(0, 3), // Offset in x and y
                             ),
                           ],
-
                           borderRadius: BorderRadius.circular(10)
                       ),
                     ),

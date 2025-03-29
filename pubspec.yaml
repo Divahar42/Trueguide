@@ -38,6 +38,7 @@ dependencies:
   image_picker: ^1.1.2
   intl: ^0.20.2
   date_picker_plus: ^4.2.0
+  bulleted_list: ^0.0.1+0.1a
 
 dev_dependencies:
   flutter_test:

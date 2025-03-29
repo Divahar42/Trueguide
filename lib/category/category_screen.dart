@@ -80,13 +80,13 @@ class _Category_ScreenState extends State<Category_Screen> {
                       onTap: (){
                         switch (categories[index]["title"]) {
                           case 'Architecture':
-                            Navigator.pushReplacement(
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => architecture()));
                             break;
                           case 'Land Promoters':
-                            Navigator.pushReplacement(
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => architecture()));
