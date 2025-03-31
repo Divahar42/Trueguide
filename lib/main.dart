@@ -18,6 +18,7 @@ import 'category/profile_1.dart';
 import 'kyc/kyc_terms.dart';
 import 'kyc/ver 1.dart';
 import 'kyc/ver 5.dart';
+import 'login/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'Lato',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: profile_1(),
+      home: SplashScreen(),
     );
   }
 }
